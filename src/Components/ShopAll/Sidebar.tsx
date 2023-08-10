@@ -8,12 +8,11 @@ interface SidebarProps {
 }
 
 export default function Sidebar({products, categories}: SidebarProps) {
-  console.log(products);
   return (
      <div className="col-span-2 m-9">
       <div>
 <h1 className='text-peach font-bold text-2xl'>BY CATEGORY</h1>
-      <ul className=''>
+      <ul >
         {categories.map((category) => (
           <li key={category} className='my-5 text-lg border-b-2'><Link href='/'>{category}</Link></li>
         ))}
