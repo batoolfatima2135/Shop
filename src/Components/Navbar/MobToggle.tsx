@@ -21,7 +21,16 @@ export default function MobToggle() {
   return (
     <>
        <div className=' flex pb justify-end items-center px-3 sm:col-span-1 col-span-3 '>
-          <button className='px-5'><Image src={ShoppingCartIcon} alt='cart' className=' w-6 h-6 sm:hidden'></Image></button>
+         <motion.button
+          whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.25 },
+          }}
+          whileTap={{ scale: 0.9 }}
+           className='px-5'
+
+      ><Image src={ShoppingCartIcon} alt='cart' className=' w-6 h-6 sm:hidden'></Image>
+      </motion.button>
           <button onClick={handleClick} className='sm:hidden '><MenuIcon /></button>
         </div>
     
