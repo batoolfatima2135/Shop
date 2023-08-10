@@ -206,12 +206,11 @@ export const productSlice = createSlice({
   initialState,
   reducers: {
     addtoCart: (state, action) => {
-      console.log(action.payload);
       const newState = state.products.map((product) => {
         if (product.id !== action.payload) return product;
         return { ...product, quantity: 1 };
       });
-      console.log(newState);
+
       state.products = newState;
     },
     increment: (state, action) => {
@@ -236,10 +235,19 @@ export const productSlice = createSlice({
         product.quantity = (product.quantity || 0) - 1;
       }
     },
+    Remove : (state, action) => {
+       const newState = state.products.map((product) => {
+        if (product.id !== action.payload) return product;
+        return { ...product, quantity: 0 };
+      });
+
+      state.products = newState;
+     
+    }
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addtoCart, increment, decrement } = productSlice.actions;
+export const { addtoCart, increment, decrement, Remove} = productSlice.actions;
 
 export default productSlice.reducer;

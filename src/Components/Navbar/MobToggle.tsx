@@ -11,7 +11,7 @@ import Dropdown from "./Dropdown";
 import Search from "./Search";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/Redux/store";
-import { decrement, increment } from "@/Redux/Slices/productSlice";
+import { Remove, decrement, increment } from "@/Redux/Slices/productSlice";
 
 const variants = {
   open: { opacity: 1, x: 0 },
@@ -26,8 +26,9 @@ export default function MobToggle() {
   const [cartisOpen, setCartIsOpen] = useState<boolean>(false);
   const products = useSelector((state: RootState) => state.products.products);
   const filteredProducts = products.filter((product) =>
-    product.hasOwnProperty("quantity")
+    product.hasOwnProperty("quantity") && product.quantity !== undefined && product.quantity > 0
   );
+
   const dispatch = useDispatch();
   console.log(filteredProducts);
   const classNames = `absolute bg-white mt-14 w-2/4 shadow-lg justify-between ${
@@ -146,7 +147,7 @@ export default function MobToggle() {
                   <td className="border-b">1</td>
                   <td className="border-b">{product.title}</td>
                   <td className="border-b">img</td>
-                  <td className="border-b">{product.quantity? product.price * product.quantity : product.price}</td>
+                  <td className="border-b">{product.quantity && product.quantity> 0 ? product.price * product.quantity : product.price}</td>
                   <td className="text-center">
                     <button
                       onClick={() => dispatch(increment(product.id))}
@@ -155,7 +156,7 @@ export default function MobToggle() {
                       +
                     </button>{" "}
                     <span>{product.quantity}</span>{" "}
-                    <button onClick={() => dispatch(decrement(product.id))}>
+                    <button onClick={() => product.quantity !== undefined && product.quantity > 0 ? dispatch(decrement(product.id)): dispatch(Remove(product.id))}>
                       -
                     </button>
                   </td>
