@@ -1,8 +1,15 @@
+import Providers from '@/Redux/Provider'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Oswald } from 'next/font/google'
+import Navbar from '@/Components/Navbar/Navbar'
 
-const inter = Inter({ subsets: ['latin'] })
+const oswald = Oswald({ 
+  weight: ['300', '700'],
+  variable: '--font-oswald',
+  subsets: ['latin'],
+  display: 'swap', 
+  })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={oswald.className}><Providers> 
+        <Navbar></Navbar>
+        {children} 
+        
+        </Providers></body>
     </html>
   )
 }
