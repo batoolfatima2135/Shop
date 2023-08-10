@@ -190,10 +190,13 @@ export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
+    setProducts: (state, action) => {
+      return action.payload;
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {} = productSlice.actions
+export const { setProducts } = productSlice.actions
 
 export default productSlice.reducer
