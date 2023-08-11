@@ -1,6 +1,7 @@
 import { addtoCart } from "@/Redux/Slices/productSlice";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import ButtonStyle from "./ButtonStyle";
 
 interface AddtoCartProps {
   id: number;
@@ -27,9 +28,12 @@ export default function AddtoCart({ id }: AddtoCartProps) {
 
   return (
     <div>
-      <button className="border-red-400" onClick={handleClick}>
-        Add to cart
-      </button>
+      <ButtonStyle>
+        <button className="border-red-400" onClick={handleClick}>
+          Add to cart
+        </button>
+      </ButtonStyle>
+
       <div
         className={`bg-green-300 mt-2 p-2 rounded-md transition-opacity ${
           showMessage ? "opacity-100" : "opacity-0 hidden"
