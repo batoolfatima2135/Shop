@@ -27,19 +27,20 @@ export default function AddtoCart({ id }: AddtoCartProps) {
   }, [showMessage]);
 
   return (
-    <div>
-      <ButtonStyle>
-        <button className="border-red-400" onClick={handleClick}>
-          Add to cart
-        </button>
-      </ButtonStyle>
+    <div >
+      <button
+        onClick={handleClick}
+        className="px-3 py-2 mx-2  text-peach lg:text-lg   border-peach border-2 hover:bg-peach hover:text-white hover:scale-105"
+      >
+        Add to cart
+      </button>
 
       <div
-        className={`bg-green-300 mt-2 p-2 rounded-md transition-opacity ${
+        className={`absolute b-0 m-1 p-3 bg-gray-500 text-white rounded-md transition-opacity ${
           showMessage ? "opacity-100" : "opacity-0 hidden"
         }`}
       >
-        Product added successfully!
+        <p className="text-center">Product added successfully!</p>
       </div>
     </div>
   );

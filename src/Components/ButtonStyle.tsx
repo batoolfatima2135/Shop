@@ -6,7 +6,7 @@ export default function ButtonStyle({
   children: React.ReactNode;
 }) {
   return (
-    <button className="px-4 py-2 mx-2  text-peach text-lg   border-peach border-2 hover:bg-peach hover:text-white hover:scale-105  ">
+    <button className="px-3 py-2 sm:mx-2  text-peach lg:text-lg   border-peach border-2 hover:bg-peach hover:text-white hover:scale-105  ">
       {children}
     </button>
   );
