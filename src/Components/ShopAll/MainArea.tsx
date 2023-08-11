@@ -8,7 +8,7 @@ interface SidebarProps {
 }
 export default function MainArea({ products, scope }: SidebarProps) {
   return (
-    <div className="col-span-8 my-4">
+    <div className="lg:col-span-6 md:col-span-6 col-span-8 my-4">
       {scope && (
         <h1 className="text-peach font-bold text-2xl  mx-3 ">
           SORTED BY {scope === "price" ? "PRICE" : "CATEGORY"}

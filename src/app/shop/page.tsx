@@ -6,9 +6,7 @@ import { useSelector } from "react-redux";
 
 export default function Shop() {
   const Products = useSelector((state: RootState) => state.products.products);
-  const Categories = useSelector(
-    (state: RootState) => state.products.categories
-  );
+ 
   return (
       <MainArea  products={Products} ></MainArea>
   );

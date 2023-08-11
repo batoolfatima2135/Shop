@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Dropdown from "./Dropdown";
 import Search from "./Search";
+import Badge from "./Badge";
 
 const variants = {
   open: { opacity: 1, x: 0 },
@@ -29,22 +30,27 @@ export default function MobToggle() {
     <>
       <div className=" flex pb justify-end items-center   px-3 col-span-4 md:col-span-1 lg:col-span-3 ">
         <Search />
-        <motion.button
-          whileHover={{
-            scale: 1.1,
-            transition: { duration: 0.25 },
-          }}
-          whileTap={{ scale: 0.9 }}
-          className="px-5"
-        >
-          <Link href="/shop/cart">
-            <Image
-              src={ShoppingCartIcon}
-              alt="cart"
-              className=" w-6 h-6 sm:block md:block lg:block"
-            />
-          </Link>
-        </motion.button>
+        <div className="flex">
+          <motion.button
+            whileHover={{
+              scale: 1.1,
+              transition: { duration: 0.25 },
+            }}
+            whileTap={{ scale: 0.9 }}
+            className="px-5"
+          >
+            <Link href="/shop/cart">
+              <Image
+                src={ShoppingCartIcon}
+                alt="cart"
+                className=" w-8 h-8 sm:block md:block lg:block"
+              />
+            </Link>
+          </motion.button>
+
+          <Badge />
+        </div>
+
         <button onClick={handleClick} className="sm:hidden ">
           <MenuIcon />
         </button>
