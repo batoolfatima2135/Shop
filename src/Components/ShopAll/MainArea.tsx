@@ -21,7 +21,7 @@ export default function MainArea({ products, scope }: SidebarProps) {
         {products.map((product) => (
           <div
             key={product.id}
-            className="border m-3 p-5  lg:col-span-2 md:col-span-2 sm:col-span-3"
+            className="border m-3 p-5  lg:col-span-2 md:col-span-3 col-span-6"
           >
             <div className="h-[200px] flex justify-center items-center">
               <Image
@@ -46,7 +46,7 @@ export default function MainArea({ products, scope }: SidebarProps) {
             </div>
 
             <div className="flex justify-center items-center">
-              <div>
+              <div className="">
                 <AddtoCart id={product.id} />
               </div>
               <div>
