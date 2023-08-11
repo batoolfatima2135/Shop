@@ -208,20 +208,22 @@ export const productSlice = createSlice({
     addtoCart: (state, action) => {
       const newState = state.products.map((product) => {
         if (product.id !== action.payload) return product;
+        if (product.quantity) {
+          product.quantity++;
+          return product;
+        }
         return { ...product, quantity: 1 };
       });
 
       state.products = newState;
     },
     increment: (state, action) => {
-      console.log("hey");
       const product = state.products.find(
         (product) => product.id === action.payload
       );
 
       console.log(product);
       if (product) {
-        // Increment the quantity of the found product
         product.quantity = (product.quantity || 0) + 1;
       }
     },
@@ -231,23 +233,21 @@ export const productSlice = createSlice({
       );
       console.log(product);
       if (product) {
-        // Increment the quantity of the found product
         product.quantity = (product.quantity || 0) - 1;
       }
     },
-    Remove : (state, action) => {
-       const newState = state.products.map((product) => {
+    Remove: (state, action) => {
+      const newState = state.products.map((product) => {
         if (product.id !== action.payload) return product;
         return { ...product, quantity: 0 };
       });
 
       state.products = newState;
-     
-    }
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addtoCart, increment, decrement, Remove} = productSlice.actions;
+export const { addtoCart, increment, decrement, Remove } = productSlice.actions;
 
 export default productSlice.reducer;
