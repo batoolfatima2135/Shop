@@ -1,7 +1,7 @@
 import { productsArray } from "@/Redux/Slices/productSlice";
 import React from "react";
 import AddtoCart from "../AddtoCart";
-
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import Image from "next/image";
 import ButtonStyle from "../ButtonStyle";
 import Link from "next/link";
@@ -10,20 +10,18 @@ interface SidebarProps {
   products: productsArray[];
   scope?: string;
 }
+
 export default function MainArea({ products, scope }: SidebarProps) {
   return (
     <div className="lg:col-span-6 md:col-span-6 col-span-8 my-4">
       {scope && (
-        <h1 className="text-peach font-bold text-2xl  mx-3 ">
+        <h1 className="text-peach font-bold text-2xl mx-3 ">
           SORTED BY {scope === "price" ? "PRICE" : "CATEGORY"}
         </h1>
       )}
-      <div className="grid grid-cols-6">
+      <div className="grid grid-cols-2  gap-4">
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="border m-3 p-5  lg:col-span-2 md:col-span-3 col-span-3"
-          >
+          <div key={product.id} className="border m-3 p-5">
             <div className="h-[200px] flex justify-center items-center">
               <Image
                 src={product.image}
@@ -33,7 +31,7 @@ export default function MainArea({ products, scope }: SidebarProps) {
                 width={100}
               />
             </div>
-            <div className="h-[100px]">
+            <div className="h-[120px]">
               <p className="border-b border-t pb-1">{product.title}</p>
               <div className="flex justify-between items-center pt-2">
                 <p>
@@ -42,19 +40,20 @@ export default function MainArea({ products, scope }: SidebarProps) {
                   </span>{" "}
                   <b>{product.price}</b>
                 </p>
-                <p>{product.category}</p>
+                <p className="sm:block hidden">{product.category}</p>
               </div>
             </div>
 
-            <div className="flex justify-center items-center">
-              <div className="">
-                <AddtoCart id={product.id} />
-              </div>
-              <div>
-                <ButtonStyle>
-                  <Link href={`/shop/details/${product.id}`}>View Details</Link>
-                </ButtonStyle>
-              </div>
+            <div className="flex sm:justify-center  items-center mt-2">
+              <AddtoCart id={product.id} />
+              <ButtonStyle>
+                <Link href={`/shop/details/${product.id}`}>
+                  <span className="sm:block hidden">View Details</span>
+                  <span className="sm:hidden block">
+                    <VisibilityIcon />
+                  </span>
+                </Link>
+              </ButtonStyle>
             </div>
           </div>
         ))}

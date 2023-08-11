@@ -40,12 +40,12 @@ export default function AddtoCart({ id, quantity }: AddtoCartProps) {
     <div>
       <button
         onClick={handleClick}
-        className="px-3 py-1 mx-2  text-peach lg:text-lg sm:hidden block  border-peach border-2 hover:bg-peach hover:text-white hover:scale-105"
+        className="py-2 mx-2 px-2 text-peach lg:text-lg sm:hidden block  hover:bg-peach  border-peach border-2 hover:text-white hover:scale-105"
       >
         <Image
           src={ShoppingCartIcon}
           alt="cart"
-          className=" w-8 h-8 sm:block md:block lg:block"
+          className=" w-5 h-5  sm:block md:block lg:block"
         />
       </button>
       <button
