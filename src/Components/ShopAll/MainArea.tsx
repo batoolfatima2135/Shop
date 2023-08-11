@@ -19,9 +19,12 @@ export default function MainArea({ products, scope }: SidebarProps) {
           SORTED BY {scope === "price" ? "PRICE" : "CATEGORY"}
         </h1>
       )}
-      <div className="grid grid-cols-2  gap-4">
+      <div className="grid grid-cols-2  gap-2">
         {products.map((product) => (
-          <div key={product.id} className="border m-3 p-5">
+          <div
+            key={product.id}
+            className="border-2 sm:m-3 m-1 sm:p-5 p-2 shadow-lg"
+          >
             <div className="h-[200px] flex justify-center items-center">
               <Image
                 src={product.image}
