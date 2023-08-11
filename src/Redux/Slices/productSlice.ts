@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createAction } from "@reduxjs/toolkit";
 
 export interface productsArray {
   id: number;
@@ -16,6 +16,10 @@ export interface productState {
   isLoading: boolean;
   error: string;
 }
+
+export const myAction = createAction("addtoCartQuantity/myAction", (id, quantity) => ({
+  payload: { id, quantity },
+}));
 
 const initialState: productState = {
   products: [
@@ -217,6 +221,21 @@ export const productSlice = createSlice({
 
       state.products = newState;
     },
+    addtoCartQuantity: (state, action) => {
+      console.log("i am here");
+      const { id, quantity } = action.payload;
+      const newState = state.products.map((product) => {
+        if (product.id !== id) return product;
+        if (product.quantity) {
+          product.quantity = quantity;
+          return product;
+        }
+        return { ...product, quantity: 1 };
+      });
+
+      state.products = newState;
+    },
+
     increment: (state, action) => {
       const product = state.products.find(
         (product) => product.id === action.payload
@@ -248,6 +267,6 @@ export const productSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addtoCart, increment, decrement, Remove } = productSlice.actions;
+export const { addtoCart, increment, decrement, Remove, addtoCartQuantity } = productSlice.actions;
 
 export default productSlice.reducer;

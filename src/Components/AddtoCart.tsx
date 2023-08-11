@@ -1,17 +1,22 @@
-import { addtoCart } from "@/Redux/Slices/productSlice";
+import { addtoCart, addtoCartQuantity, myAction } from "@/Redux/Slices/productSlice";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ButtonStyle from "./ButtonStyle";
 
 interface AddtoCartProps {
   id: number;
+  quantity?:number;
 }
 
-export default function AddtoCart({ id }: AddtoCartProps) {
+export default function AddtoCart({ id, quantity }: AddtoCartProps) {
   const [showMessage, setShowMessage] = useState(false);
   const dispatch = useDispatch();
 
   const handleClick = () => {
+    if(quantity) {
+      console.log(quantity);
+      dispatch(myAction(id, quantity));
+    }
     dispatch(addtoCart(id));
     setShowMessage(true);
   };

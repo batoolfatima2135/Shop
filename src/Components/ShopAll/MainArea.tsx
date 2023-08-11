@@ -51,7 +51,7 @@ export default function MainArea({ products, scope }: SidebarProps) {
               </div>
               <div>
                 <ButtonStyle>
-                  <Link href="/">View Details</Link>
+                  <Link href={`/shop/details/${product.id}`}>View Details</Link>
                 </ButtonStyle>
               </div>
             </div>
