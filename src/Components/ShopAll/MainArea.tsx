@@ -1,21 +1,27 @@
 import { productsArray } from "@/Redux/Slices/productSlice";
 import React from "react";
-import AddtoCart from '../AddtoCart';
+import AddtoCart from "../AddtoCart";
 
 interface SidebarProps {
   products: productsArray[];
+  scope?: string;
 }
-export default function MainArea({ products }: SidebarProps) {
-
+export default function MainArea({ products, scope }: SidebarProps) {
   return (
     <div className="sm:col-span-6 m-5">
+      {scope && (
+        <h1 className="text-peach font-bold text-2xl  mx-3 ">
+          SORTED BY {scope === "price" ? "PRICE" : "CATEGORY"}
+        </h1>
+      )}
+
       {products.map((product) => (
         <div key={product.id} className="border m-3 bg-red-300">
           <p>{product.id}</p>
           <p>{product.title}</p>
           <p>{product.category}</p>
+          <p>{product.price}</p>
           <AddtoCart id={product.id} />
-          
         </div>
       ))}
     </div>

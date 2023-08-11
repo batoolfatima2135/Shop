@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import Menu from "./Menu";
-import MobToggle from "./MobToggle";
+import MobToggle from "./Toggle";
 import Serach from "./Search";
 import Search from "./Search";
 
