@@ -1,8 +1,6 @@
 "use client";
 import { RootState } from "@/Redux/store";
 import { useSelector } from "react-redux";
-import Image from "next/image";
-import Navbar from "@/Components/Navbar/Navbar";
 
 export default function Home() {
   const products = useSelector((state: RootState) => state.products.products);
