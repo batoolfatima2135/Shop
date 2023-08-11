@@ -19,7 +19,7 @@ const variants = {
 export default function MobToggle() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const classNames = `absolute bg-white mt-14 w-2/4 shadow-lg justify-between ${
+  const classNames = `absolute bg-white mt-14 w-3/4 shadow-lg justify-between ${
     isOpen ? "" : "opacity-0"
   }`;
   const handleClick = () => {

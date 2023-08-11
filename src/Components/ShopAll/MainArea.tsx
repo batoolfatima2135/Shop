@@ -1,6 +1,7 @@
 import { productsArray } from "@/Redux/Slices/productSlice";
 import React from "react";
 import AddtoCart from "../AddtoCart";
+
 import Image from "next/image";
 import ButtonStyle from "../ButtonStyle";
 import Link from "next/link";
@@ -21,7 +22,7 @@ export default function MainArea({ products, scope }: SidebarProps) {
         {products.map((product) => (
           <div
             key={product.id}
-            className="border m-3 p-5  lg:col-span-2 md:col-span-3 col-span-6"
+            className="border m-3 p-5  lg:col-span-2 md:col-span-3 col-span-3"
           >
             <div className="h-[200px] flex justify-center items-center">
               <Image
