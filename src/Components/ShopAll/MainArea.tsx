@@ -19,6 +19,7 @@ export default function MainArea({ products, scope, name }: SidebarProps) {
   const modifiedString = pathname.replace("%20", " ").replace(/\//g, " > ");
   const [sortedProducts, setSortedProducts] =
     useState<productsArray[]>(products);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleAscendingclick = () => {
     const ascendingProducts = [...products].sort((a, b) => a.price - b.price);
@@ -28,6 +29,23 @@ export default function MainArea({ products, scope, name }: SidebarProps) {
   const handledescendingclick = () => {
     const descendingProducts = [...products].sort((a, b) => b.price - a.price);
     setSortedProducts(descendingProducts);
+  };
+
+  const pageSize = 8;
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const productsToShow = sortedProducts.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(products.length / pageSize);
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(i);
+    }
+    return pageNumbers;
   };
 
   return (
@@ -60,7 +78,7 @@ export default function MainArea({ products, scope, name }: SidebarProps) {
       </div>
       <div className="grid grid-cols-6">
         {sortedProducts &&
-          sortedProducts.map((product) => (
+          productsToShow.map((product) => (
             <div
               key={product.id}
               className="border-2 sm:m-3 m-1 sm:p-5 p-2 shadow-lg  lg:col-span-2 col-span-3"
@@ -106,10 +124,43 @@ export default function MainArea({ products, scope, name }: SidebarProps) {
               </div>
             </div>
           ))}
-        {sortedProducts.length < 1 && (
+        {productsToShow.length < 1 && (
           <div className="lg:col-span-6 md:col-span-6 col-span-8  flex items-center first-letter:flex justify-center align-middle h-60">
             <p className="text-2xl">No search result found</p>
           </div>
+        )}
+      </div>
+      <div className="m-4">
+        {currentPage > 1 && (
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            className="bg-peach border border-peach text-white p-2"
+          >
+            Previous
+          </button>
+        )}
+
+        {getPageNumbers().map((pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => handlePageChange(pageNumber)}
+            className={`${
+              pageNumber === currentPage
+                ? "bg-peach text-white"
+                : "text-peach border border-peach"
+            } p-2 mx-1`}
+          >
+            {pageNumber}
+          </button>
+        ))}
+
+        {currentPage < totalPages && (
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            className="bg-peach border border-peach text-white p-2 mt-4"
+          >
+            Next
+          </button>
         )}
       </div>
     </div>
