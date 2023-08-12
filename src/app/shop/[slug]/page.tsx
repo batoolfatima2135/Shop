@@ -22,7 +22,7 @@ export default function Category({ params }: { params: { slug: string } }) {
 
   return (
     <>
-      <MainArea products={filtered} scope={slug}></MainArea>;
+      <MainArea products={filtered} scope={slug} name = {decodedSlug}></MainArea>;
     </>
   );
 }
