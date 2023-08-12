@@ -26,12 +26,12 @@ export default function Sidebar({ products, categories }: SidebarProps) {
   let priceRange = numbers.map((number) => roundToNearest(number));
   priceRange = priceRange.filter((number) => number !== 0);
   return (
-    <div className="hidden sm:block sm:col-span-2 m-9">
+    <div className="sm:block hidden sm:col-span-2 m-9">
       <div>
         <h1 className="text-peach font-bold text-2xl">BY CATEGORY</h1>
         <ul>
           {categories.map((category) => (
-            <li key={category} className="my-5 text-lg border-b-2">
+            <li key={category} className="my-5 text-lg border-b-2 capitalize">
               <Link href={`/shop/${category}`}>{category}</Link>
             </li>
           ))}

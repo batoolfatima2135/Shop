@@ -22,7 +22,7 @@ export default function Dropdown({ screen, handleClickprop }: DropdownProps) {
   const classNames =
     screen === "web"
       ? `absolute p-2  bg-white shadow-lg justify-between ${
-          isOpen ? "" : "opacity-0"
+          isOpen ? "" : "hidden "
         } `
       : `  bg-white  justify-between ${isOpen ? "" : "opacity-0"} ${
           isOpen ? "" : "hidden"
@@ -52,7 +52,7 @@ export default function Dropdown({ screen, handleClickprop }: DropdownProps) {
               <Link
                 href={`/shop/${category}`}
                 onClick={screen === "web" ? handleClick : handleClickprop}
-                className="my-3 transform transition duration-500 relative text-lg w-fit block after:block after:absolute after:h-[3px] after:bg-peach  after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center hover:text-orange-800"
+                className="my-3 capitalize transform transition duration-500 relative text-lg w-fit block after:block after:absolute after:h-[3px] after:bg-peach  after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center hover:text-orange-800"
               >
                 {category}
               </Link>

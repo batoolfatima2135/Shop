@@ -28,7 +28,7 @@ export default function MobToggle() {
 
   return (
     <>
-      <div className=" flex pb justify-end items-center   px-3 col-span-4 md:col-span-1 lg:col-span-3 ">
+      <div className=" flex justify-end items-center   px-3 col-span-6 md:col-span-1 lg:col-span-3 ">
         <Search />
         <div className="flex">
           <motion.button
@@ -43,7 +43,7 @@ export default function MobToggle() {
               <Image
                 src={ShoppingCartIcon}
                 alt="cart"
-                className=" w-8 h-8 sm:block md:block lg:block"
+                className=" w-10 h-8 sm:block md:block lg:block"
               />
             </Link>
           </motion.button>
@@ -97,6 +97,7 @@ export default function MobToggle() {
           <li className="px-4 p-3">
             <Link
               href="/"
+              onClick={handleClick}
               className="  transform transition duration-500 relative text-xl w-fit block after:block after:absolute after:h-[3px] after:bg-orange-800  after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center hover:text-orange-800"
             >
               Contact

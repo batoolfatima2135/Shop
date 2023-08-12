@@ -1,12 +1,22 @@
 "use client";
 import { RootState } from "@/Redux/store";
 import { useSelector } from "react-redux";
+import coverImage from "../Assets/cover.jpg";
+import Image from "next/image";
 
 export default function Home() {
   const products = useSelector((state: RootState) => state.products.products);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="w-3 h-5 rounded-full bg-blue-500 text-xs">badge</div>
+    <main className="flex justify-center items-center">
+      <div className=" px-32  bg-peach rounded">
+        <Image
+          src={coverImage}
+          alt="cover"
+          className="rounded bg-cover"
+          height={600}
+          width={1000}
+        />
+      </div>
     </main>
   );
 }

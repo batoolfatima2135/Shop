@@ -17,7 +17,7 @@ export default function Badge() {
   );
 
   return (
-    <div className="absolute sm:right-9 right-[60px] flex items-center justify-center w-5 h-5 rounded-full bg-red-700 text-xs text-center text-white">
+    <div className="absolute sm:right-9 right-[60px]  flex items-center justify-center w-5 h-5 rounded-full bg-red-700 text-xs text-center text-white">
       <p>{quantity}</p>
     </div>
   );
