@@ -31,7 +31,7 @@ export default function Cart() {
                 <th className=" border-b w-1/6">Item</th>
                 <th className=" border-b w-1/6">Image</th>
                 <th className=" border-b w-1/6">Price</th>
-                <th className=" border-b w-1/6">quantity</th>
+                <th className=" border-b w-1/6">Quantity</th>
               </tr>
             </thead>
             <tbody>
