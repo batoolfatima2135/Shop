@@ -1,7 +1,5 @@
 import {
-  addtoCart,
-  addtoCartQuantity,
-  myAction,
+  addtoCart
 } from "@/Redux/Slices/productSlice";
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -10,7 +8,7 @@ import Image from "next/image";
 
 interface AddtoCartProps {
   id: number;
-  quantity?: number;
+  quantity: number;
 }
 
 export default function AddtoCart({ id, quantity }: AddtoCartProps) {
@@ -18,11 +16,8 @@ export default function AddtoCart({ id, quantity }: AddtoCartProps) {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    if (quantity) {
-      console.log(quantity);
-      dispatch(myAction(id, quantity));
-    }
-    dispatch(addtoCart(id));
+    
+    dispatch(addtoCart({id, quantity}));
     setShowMessage(true);
   };
 

@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/Redux/store";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -19,6 +19,7 @@ const variants = {
 
 export default function Dropdown({ screen, handleClickprop }: DropdownProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const classNames =
     screen === "web"
       ? `absolute p-2  bg-white shadow-lg justify-between ${
@@ -31,10 +32,24 @@ export default function Dropdown({ screen, handleClickprop }: DropdownProps) {
   const handleClick = () => {
     setIsOpen((isOpen) => !isOpen);
   };
-
+   const handleOutsideClick = () => {
+  
+      setIsOpen(false);
+    }
+ if (isOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    }
   const categories: string[] = useSelector(
     (state: RootState) => state.products.categories
   );
+  useEffect(() => {
+   
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [isOpen]);
 
   return (
     <>

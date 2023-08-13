@@ -112,7 +112,7 @@ export default function MainArea({ products, scope, name }: SidebarProps) {
                 </div>
               </div>
               <div className="flex sm:justify-center  items-center mt-2">
-                <AddtoCart id={product.id} />
+                <AddtoCart id={product.id} quantity={1} />
                 <Link href={`/shop/details/${product.id}`}>
                   <ButtonStyle>
                     <span className="sm:block hidden">View Details</span>
@@ -140,7 +140,7 @@ export default function MainArea({ products, scope, name }: SidebarProps) {
           </button>
         )}
 
-        {getPageNumbers().map((pageNumber) => (
+        { getPageNumbers().length > 1 && getPageNumbers().map((pageNumber) => (
           <button
             key={pageNumber}
             onClick={() => handlePageChange(pageNumber)}
