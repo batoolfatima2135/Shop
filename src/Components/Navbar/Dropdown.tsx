@@ -32,7 +32,12 @@ export default function Dropdown({ screen, handleClickprop }: DropdownProps) {
   const handleClick = () => {
     setIsOpen((isOpen) => !isOpen);
   };
-   const handleOutsideClick = () => {
+   
+  const categories: string[] = useSelector(
+    (state: RootState) => state.products.categories
+  );
+  useEffect(() => {
+    const handleOutsideClick = () => {
   
       setIsOpen(false);
     }
@@ -41,10 +46,6 @@ export default function Dropdown({ screen, handleClickprop }: DropdownProps) {
     } else {
       document.removeEventListener("mousedown", handleOutsideClick);
     }
-  const categories: string[] = useSelector(
-    (state: RootState) => state.products.categories
-  );
-  useEffect(() => {
    
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);

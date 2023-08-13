@@ -1,4 +1,4 @@
-"use client";
+// Update the import path to reflect the correct folder structure
 import MainArea from "@/Components/ShopAll/MainArea";
 import { RootState } from "@/Redux/store";
 import React from "react";
